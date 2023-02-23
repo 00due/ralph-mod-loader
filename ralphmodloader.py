@@ -5,7 +5,7 @@ from tkinter.filedialog import askdirectory
 from distutils.dir_util import copy_tree
 from sys import platform
 
-print("RalphModLoader v1.1")
+print("RalphModLoader v1.2")
 if platform == "linux" or platform == "linux2":
     zipDefDir = "~/Downloads/"
     gameDefDir = "~/.steam/steam/steamapps/common/Ralph's party RPG"
@@ -30,20 +30,21 @@ except ValueError:
     print("--------------------")
     exit()
 if uninChoice == 1:
-    print("Select the mod you want to install (should be a zip file)")
+    print("Select the mod you want to install (should be a .ralph or a .zip file)")
 
     filetypes = (
-        ('Ralph mods', '*.zip'),
+        ('.ralph mods', '*.ralph'),
+        ('.zip mods', '*.zip'),
         ('All files', '*.*'),
     )
 
     tk.Tk().withdraw()
     fn = askopenfilename(
-        title='Select a mod zip...',
+        title='Select a mod installation file...',
         filetypes=filetypes,
         initialdir=zipDefDir,
     )
-    if not ".zip" in fn:
+    if not ".zip" or not ".ralph" in fn:
         print("Stopping...")
         exit()
     zip = zipfile.ZipFile(fn)
