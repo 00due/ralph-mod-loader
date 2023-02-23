@@ -5,7 +5,7 @@ from tkinter.filedialog import askdirectory
 from distutils.dir_util import copy_tree
 from sys import platform
 
-print("RalphModLoader v1.0")
+print("RalphModLoader v1.1")
 if platform == "linux" or platform == "linux2":
     zipDefDir = "~/Downloads/"
     gameDefDir = "~/.steam/steam/steamapps/common/Ralph's party RPG"
@@ -18,8 +18,6 @@ elif platform == "win32":
 else:
     print("WARNING:")
     print("Your platform might be incompatible with this program.")
-
-
 
 print("")
 print("Do you want to install (1) or uninstall (2) a mod?")
@@ -45,10 +43,9 @@ if uninChoice == 1:
         filetypes=filetypes,
         initialdir=zipDefDir,
     )
-
-
-
-    
+    if not ".zip" in fn:
+        print("Stopping...")
+        exit()
     zip = zipfile.ZipFile(fn)
     try:
         ralfmod = zip.open("Ralph's party RPG/Data/System.rvdata")
@@ -155,7 +152,7 @@ elif uninChoice == 2:
 
     os.chdir(ralphdir)
     retain = "original"
-    print("Uninstalled the mod...")
+    print("Uninstalling the mod...")
     for item in os.listdir(os.getcwd()):
         if item not in retain:
             try:
