@@ -5,12 +5,10 @@ from tkinter.filedialog import askdirectory
 from distutils.dir_util import copy_tree
 from sys import platform
 
-print("RalphModLoader v1.2")
+print("RalphModLoader v1.2.1")
 if platform == "linux" or platform == "linux2":
-    zipDefDir = "~/Downloads/"
     gameDefDir = "~/.steam/steam/steamapps/common/Ralph's party RPG"
 elif platform == "win32":
-    zipDefDir = "~/Downloads/"
     if os.path.exists("C:/Program Files/Steam/steamapps/common/Ralph's party RPG"):
         gameDefDir = "C:/Program Files/Steam/steamapps/common/Ralph's party RPG"
     else:
@@ -18,7 +16,7 @@ elif platform == "win32":
 else:
     print("WARNING:")
     print("Your platform might be incompatible with this program.")
-
+zipDefDir = "~/Downloads/"
 print("")
 print("Do you want to install (1) or uninstall (2) a mod?")
 try:
