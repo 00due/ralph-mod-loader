@@ -1,5 +1,5 @@
 # Ralph mod loader
- An easy to use mod loader for Ralph's Party RPG written in Python.
+ An easy-to-use mod loader for Ralph's Party RPG written in Python.
 
 # Tutorial
  1. Install Python
