@@ -1,7 +1,6 @@
 import os, zipfile, shutil, glob, time
 import tkinter as tk
 import webbrowser
-import urllib
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
@@ -9,7 +8,7 @@ from distutils.dir_util import copy_tree
 from sys import platform
 from tkinter.messagebox import showerror, showwarning, showinfo, askyesno
 
-print("RalphModLoader v1.2.1")
+print("RalphModLoader v1.2.3")
 if platform == "linux" or platform == "linux2":
     gameDefDir = "~/.steam/steam/steamapps/common/Ralph's party RPG"
 elif platform == "win32":
@@ -23,7 +22,7 @@ else:
 zipDefDir = "~/Downloads/"
 
 root = tk.Tk()
-root.title('Ralph Mod Loader GUI 1.2.1')
+root.title('Ralph Mod Loader GUI 1.2.3')
 root.geometry('300x200')
 root.resizable(False, False)
 
