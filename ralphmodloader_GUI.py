@@ -1,5 +1,7 @@
 import os, zipfile, shutil, glob, time
 import tkinter as tk
+import webbrowser
+import urllib
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
@@ -24,6 +26,9 @@ root = tk.Tk()
 root.title('Ralph Mod Loader GUI 1.2.1')
 root.geometry('300x200')
 root.resizable(False, False)
+
+def launchGame():
+    webbrowser.open('steam://rungameid/1977230')
 
 def installMod():
     print("Select the mod you want to install (should be a .ralph or a .zip file)")
@@ -120,7 +125,11 @@ def installMod():
         copy_tree(subFolderInstall, ralphdir)
         shutil.rmtree(subFolderInstall)
     print("Successfully installed the mod!")
-    showinfo("Success!", "Successfully installed the mod!")
+    if platform == "win32":
+        askLaunch = askyesno("Success!", "Successfully installed the mod! Do you want to launch the game?")
+        if askLaunch == True:
+            launchGame()
+    else: showinfo("Success!", "Successfully installed the mod!")
     exit()
 
 def uninstallMod():
@@ -174,9 +183,12 @@ def uninstallMod():
     print("Cleaning up...")
     shutil.rmtree(installCheck)
     print("All done!")
-    showinfo("Success!", "Successfully uninstalled the mod and restored the original game")
+    if platform == "win32":
+        askLaunch = askyesno("Success!", "Successfully uninstalled the mod and restored the original game! Do you want to launch the game?")
+        if askLaunch == True:
+            launchGame()
+    else: showinfo("Success!", "Successfully uninstalled the mod and restored the original game!")
     exit()
-
 
 installChoice = ttk.Button(
    root, text="Install a mod", command=installMod
