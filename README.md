@@ -5,7 +5,7 @@
 
 Step 1: installing it
  1. Either download this repo as a .zip and extract it to any directory
-    or run `git clone https://github.com/00due/ralph-mod-loader.git` (Make sure you have git installed!
+    or run `git clone https://github.com/00due/ralph-mod-loader.git` (Make sure you have git installed!)
 
 Step 2: running it
  1. Install Python
