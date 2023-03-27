@@ -10,7 +10,7 @@ Step 1: installing it
 Step 2: running it
  1. Install Python
  2. (GUI) Run the ralphmodloader_GUI.py file with python (`python ralphmodloader_GUI.py` to the terminal / cmd.)
-    (CLI) Run the ralphmodloader.py file with Python.
+ (CLI) Run the ralphmodloader.py file with Python.
 
 # Pre-downloaded mods
  This loader comes with two pre-downloaded mods - The Sex update demo and Ralph's Party RPG 2 concept. These aren't necessary for the loader to work.
@@ -22,3 +22,6 @@ Step 2: running it
  4. (Optional but highly recommended) Change the .zip's extension name to .ralph. For example, if it was Ralphmod.zip, change it to Ralphmod.ralph . This makes it more easily detectible for the player if they have multiple .zip files.
  5. Try installing it with this loader to make sure it works
  6. You're done!
+
+ #Credits
+ rdebende for the theme.

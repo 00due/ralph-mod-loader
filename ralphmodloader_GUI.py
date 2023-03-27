@@ -5,26 +5,45 @@ from tkinter import ttk
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
 from distutils.dir_util import copy_tree
-from sys import platform
+from sys import platform, argv
 from tkinter.messagebox import showerror, showwarning, showinfo, askyesno
+import argparse
 
-print("RalphModLoader v1.2.3")
+""" parser = argparse.ArgumentParser()
+opt1 = parser.add_argument('-v', '--verbose', action='store_true')
+
+args = parser.parse_args(opt1)
+
+args = parser.parse_args()
+print(args.accumulate(args.integers)) """
+
+#########
+#VERSION#
+#########
+ver = "Ralph Mod Loader GUI 1.3"
+print(ver)
+
+root = tk.Tk()
+root.title(ver)
+root.geometry('300x200')
+root.resizable(False, False)
+root.tk.call("source", "azure.tcl")
+
 if platform == "linux" or platform == "linux2":
+    root.tk.call("set_theme", "light")
+    print("Light theme has been enabled since the dark one has issues with Linux.")
     gameDefDir = "~/.steam/steam/steamapps/common/Ralph's party RPG"
 elif platform == "win32":
+    root.tk.call("set_theme", "dark")
     if os.path.exists("C:/Program Files/Steam/steamapps/common/Ralph's party RPG"):
         gameDefDir = "C:/Program Files/Steam/steamapps/common/Ralph's party RPG"
     else:
+        root.tk.call("set_theme", "light")
         gameDefDir = "C:/Program Files (x86)/Steam/steamapps/common/Ralph's party RPG"
 else:
     print("WARNING:")
     print("Your platform might be incompatible with this program.")
 zipDefDir = "~/Downloads/"
-
-root = tk.Tk()
-root.title('Ralph Mod Loader GUI 1.2.3')
-root.geometry('300x200')
-root.resizable(False, False)
 
 def launchGame():
     webbrowser.open('steam://rungameid/1977230')
@@ -141,7 +160,7 @@ def uninstallMod():
     )
     if not "/" in ralphdir:
         print("Stopping...")
-        showerror()("Canceled", "You canceled the uninstallation.")
+        showerror("Canceled", "You canceled the uninstallation.")
         exit()
     print(" ")
     print("---------------------------------------")
@@ -188,13 +207,20 @@ def uninstallMod():
             launchGame()
     else: showinfo("Success!", "Successfully uninstalled the mod and restored the original game!")
     exit()
-
-installChoice = ttk.Button(
-   root, text="Install a mod", command=installMod
-)
-uninstallChoice = ttk.Button(
-    root, text="Uninstall a mod", command=uninstallMod
-)
+if platform == "win32":
+    installChoice = ttk.Button(
+        root, text="Install a mod", command=installMod, style="Accent.TButton"
+    )
+    uninstallChoice = ttk.Button(
+        root, text="Uninstall a mod", command=uninstallMod, style="Accent.TButton"
+    )
+else:
+    installChoice = ttk.Button(
+        root, text="Install a mod", command=installMod
+    )
+    uninstallChoice = ttk.Button(
+        root, text="Uninstall a mod", command=uninstallMod
+    )
 
 installChoice.pack(
     ipadx=5, ipady=5, expand=True, side="left"
